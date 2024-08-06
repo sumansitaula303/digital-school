@@ -3,6 +3,7 @@ import cors from "cors"
 import { connectDB } from './config/db.js';
 import homeworkRouter from './routes/homeworkRoute.js';
 import bodyParser from 'body-parser';
+import adminRouter from './routes/adminRouter.js';
 //app config
 const app= express();
 const port= 5050
@@ -14,6 +15,10 @@ app.use(cors())
 
 //DB connection
 connectDB();
+
+//Real endpoints
+app.use("/api/admins", adminRouter)
+
 
 //api endpoints
 app.use("/api/homework", homeworkRouter)
