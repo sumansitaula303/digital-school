@@ -1,4 +1,5 @@
 import express from 'express'
+import { registerAdminController } from '../controllers/adminController.js';
 const adminRouter= express.Router();
 
 //get all admins
@@ -12,9 +13,7 @@ adminRouter.get("/:id",(req, res)=>{
 });
 
 //register admin
-adminRouter.put("/register",(req, res)=>{
-    //replace this func with controller
-});
+adminRouter.put("/register", registerAdminController)
 
 //login admin
 adminRouter.put("/login",(req, res)=>{
