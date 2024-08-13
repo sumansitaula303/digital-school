@@ -4,7 +4,7 @@ const addHomework= async (req, res)=>{
     console.log(req.body)
     const homework= new homeworkModel(req.body);
     if(!req.body){
-        console.log("wtf")
+        console.log("body is missing")
 
     }
     try {
