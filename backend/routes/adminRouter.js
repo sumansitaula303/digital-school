@@ -1,11 +1,10 @@
 import express from 'express'
-import { registerAdminController } from '../controllers/adminController.js';
+import { getAllAdmins, registerAdminController, loginAdminController } from '../controllers/adminController.js';
+import { isLogin } from '../middleware/isLogin.js';
 const adminRouter= express.Router();
 
 //get all admins
-adminRouter.get("/getAdmis",(req, res)=>{
-    //replace this func with controller
-});
+adminRouter.get("/getAdmins", isLogin, getAllAdmins);
 
 //get one admin
 adminRouter.get("/:id",(req, res)=>{
@@ -13,12 +12,10 @@ adminRouter.get("/:id",(req, res)=>{
 });
 
 //register admin
-adminRouter.put("/register", registerAdminController)
+adminRouter.post("/register", registerAdminController)
 
 //login admin
-adminRouter.put("/login",(req, res)=>{
-    //replace this func with controller
-});
+adminRouter.post("/login", loginAdminController);
 
 //delete admin
 adminRouter.delete("/delete/:id",(req, res)=>{

@@ -4,6 +4,7 @@ import { connectDB } from './config/db.js';
 import homeworkRouter from './routes/homeworkRoute.js';
 import bodyParser from 'body-parser';
 import adminRouter from './routes/adminRouter.js';
+import { globalerrHandler, notFoundErrHandler } from './middleware/globalErrorHandler.js';
 //app config
 const app= express();
 const port= 5050
@@ -16,24 +17,20 @@ app.use(cors())
 //DB connection
 connectDB();
 
+
+
+
 //Real endpoints
-app.use("/api/admins", adminRouter)
+app.use("/api/admins", adminRouter);
 
 
 //api endpoints
 app.use("/api/homework", homeworkRouter)
 
-app.get("/", (req, res)=>{
-    res.send("API is working")
-})
-app.get("/about", (req, res)=>{
-    res.send(
-        {
-            name: 'Suman Sitaula',
-            contact: "9817079212"
-        }
-    )
-})
+//error middleware
+app.use(notFoundErrHandler);
+app.use(globalerrHandler);
+
 
 app.listen(port, ()=>{
     console.log(`Server is running on port ${port}`)
