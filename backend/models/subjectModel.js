@@ -11,6 +11,10 @@ const subjectSchema = new Schema(
       type: String,
       required: true,
     },
+    classroom:{
+      type: Schema.Types.ObjectId,
+      ref: "Classroom",
+    },
     teacher: {
       type: Schema.Types.ObjectId,
       ref: "Teacher",
@@ -26,4 +30,4 @@ const subjectSchema = new Schema(
 
 const Subject = mongoose.model.Subject || mongoose.model("Subject", subjectSchema);
 
-module.exports = Subject;
+export default Subject;
