@@ -7,6 +7,7 @@ import adminRouter from './routes/adminRouter.js';
 import { globalerrHandler, notFoundErrHandler } from './middleware/globalErrorHandler.js';
 import classroomRouter from './routes/classroomRouter.js';
 import subjectRouter from './routes/subjectRouter.js';
+import teacherRouter from './routes/teacherRouter.js';
 //app config
 const app= express();
 const port= 5050
@@ -26,6 +27,7 @@ connectDB();
 app.use("/api/admins", adminRouter);
 app.use("/api/classroom", classroomRouter);
 app.use("/api/subject", subjectRouter)
+app.use("/api/teacher", teacherRouter)
 
 
 //api endpoints

@@ -55,9 +55,10 @@ const teacherSchema = new Schema(
         // required: true,
       }],
   
-      program: {
-        type: String,
-      },
+      classrooms: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Classroom",
+      }],
       createdBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Admin",

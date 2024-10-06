@@ -1,25 +1,22 @@
 import express from 'express'
+import { adminRegisterTeacher, teacherLogin } from '../controllers/teachersController.js';
 const teacherRouter= express.Router();
 
 //get all teacher
-teacherRouter.get("/getTeachers",(req, res)=>{
+teacherRouter.get("/getAll",(req, res)=>{
     //replace this func with controller
 });
 
 //get one teacher
-teacherRouter.get("/:id",(req, res)=>{
+teacherRouter.get("/getOne",(req, res)=>{
     //replace this func with controller
 });
 
 //register teacher
-teacherRouter.put("/register",(req, res)=>{
-    //replace this func with controller
-});
+teacherRouter.post("/register", adminRegisterTeacher);
 
 //login teacher
-teacherRouter.put("/login",(req, res)=>{
-    //replace this func with controller
-});
+teacherRouter.post("/login", teacherLogin);
 
 //delete teacher
 teacherRouter.delete("/delete/:id",(req, res)=>{
